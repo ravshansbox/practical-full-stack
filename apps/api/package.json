@@ -1,0 +1,18 @@
+{
+  "name": "@cloudretail/api",
+  "private": true,
+  "scripts": {
+    "docker:compose:up": "docker compose up",
+    "start": "ts-node src/index.ts"
+  },
+  "dependencies": {
+    "@prisma/client": "^5.9.1",
+    "date-fns": "^3.3.1"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.16",
+    "prisma": "^5.9.1",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.3.3"
+  }
+}

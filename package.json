@@ -1,0 +1,8 @@
+{
+  "name": "cloudretail",
+  "private": true,
+  "scripts": {},
+  "workspaces": [
+    "apps/*"
+  ]
+}
