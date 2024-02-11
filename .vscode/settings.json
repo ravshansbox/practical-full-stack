@@ -1,6 +1,7 @@
 {
   "[prisma]": { "editor.defaultFormatter": "Prisma.prisma" },
-  "editor.codeActionsOnSave": ["source.fixAll"],
+  "editor.codeActionsOnSave": ["source.fixAll", "source.organizeImports"],
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.formatOnSave": true,
   "typescript.tsdk": "node_modules/typescript/lib"
 }
