@@ -1,5 +1,8 @@
-# Agenda (session 3)
+# Agenda (session 4)
 
-- Constants and environment variables
-- Dockerize apps
-- Configure CI (github, gitlab)
+- Seeding the database
+- Configure the server for deployment
+  - Setup watchtower
+  - Setup swag
+- Deploy the apps to the server
+- Ensure apps are auto-deployed on push
