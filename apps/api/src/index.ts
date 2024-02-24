@@ -1,5 +1,6 @@
 import { createHTTPHandler } from '@trpc/server/adapters/standalone';
 import { createServer } from 'http';
+import { HTTP_PORT } from './constants';
 import { appRouter } from './trpc';
 
 const requestHandler = createHTTPHandler({ router: appRouter });
@@ -12,4 +13,4 @@ server.on('listening', () => {
   console.info('Listening on', server.address());
 });
 
-server.listen(3000);
+server.listen(HTTP_PORT);

@@ -24,7 +24,7 @@ export const appRouter = trpc.router({
           access_token: randomUUID(),
           access_token_valid_until: addHours(new Date(), 1),
           refresh_token: randomUUID(),
-          refresh_token_valid_until: addHours(new Date(), 7 * 24),
+          refresh_token_valid_until: addHours(new Date(), 24),
           user_id: user.id,
         },
       });

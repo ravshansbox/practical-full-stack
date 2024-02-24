@@ -3,7 +3,7 @@ import { trpc } from './trpc';
 export const App = () => {
   const createToken = trpc.createToken.useMutation({
     onMutate: (variables) => {
-      console.info('variaddbles', variables);
+      console.info('variables', variables);
     },
   });
   return (
