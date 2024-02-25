@@ -2,6 +2,7 @@ import { createHTTPHandler } from '@trpc/server/adapters/standalone';
 import { createServer } from 'http';
 import { HTTP_PORT } from './constants';
 import { appRouter } from './trpc';
+import { seedDatabase } from './utils';
 
 const requestHandler = createHTTPHandler({ router: appRouter });
 
@@ -13,4 +14,6 @@ server.on('listening', () => {
   console.info('Listening on', server.address());
 });
 
-server.listen(HTTP_PORT);
+seedDatabase().then(() => {
+  server.listen(HTTP_PORT);
+});

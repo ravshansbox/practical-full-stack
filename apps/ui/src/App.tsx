@@ -8,6 +8,7 @@ export const App = () => {
   });
   return (
     <form
+      className="max-w-64"
       onSubmit={(event) => {
         event.preventDefault();
         const formData = new FormData(event.currentTarget);
@@ -18,11 +19,11 @@ export const App = () => {
       }}
     >
       <label>
-        <span>Username</span>
+        <span>Username:</span>
         <input type="text" name="username" />
       </label>
       <label>
-        <span>Password</span>
+        <span>Password:</span>
         <input type="text" name="password" />
       </label>
       <button type="submit">Submit</button>
