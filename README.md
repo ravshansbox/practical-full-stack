@@ -4,7 +4,7 @@
 
 ## Backend: postgres, prisma, trpc
 
-## Frontend: react, trpc, tailwind
+## Frontend: react, trpc, tailwind, windstitch
 
 ## Dockerize apps, docker compose for services, configure CI (gitlab)
 

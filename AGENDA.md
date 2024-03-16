@@ -1,8 +1,5 @@
-# Agenda (session 4)
+# Agenda (session 5)
 
-- Seeding the database
-- Configure the server for deployment
-  - Setup watchtower
-  - Setup swag
-- Deploy the apps to the server
-- Ensure apps are auto-deployed on push
+- Zero clone
+- BE: implement nested routes
+- BE: add migrations for companies, permissions, products, units, product_units, orders, order_details

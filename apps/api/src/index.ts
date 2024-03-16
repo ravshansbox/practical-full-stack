@@ -1,5 +1,5 @@
 import { createHTTPHandler } from '@trpc/server/adapters/standalone';
-import { createServer } from 'http';
+import { createServer } from 'node:http';
 import { HTTP_PORT } from './constants';
 import { appRouter } from './trpc';
 import { seedDatabase } from './utils';
