@@ -1,7 +1,7 @@
 import { trpc } from './trpc';
 
 export const App = () => {
-  const createToken = trpc.createToken.useMutation({
+  const createToken = trpc.tokens.createToken.useMutation({
     onMutate: (variables) => {
       console.info('variables', variables);
     },

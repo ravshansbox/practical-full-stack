@@ -7,12 +7,18 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+enum Role {
+  OWNER
+  USER
+}
+
 model User {
   id       String @id @db.Uuid
   username String
   password String
 
-  tokens Token[] @relation("tokens__user_id")
+  tokens      Token[]      @relation("tokens__user_id")
+  permissions Permission[] @relation("permissions__user_id")
 
   @@unique([username])
   @@map("users")
@@ -29,4 +35,105 @@ model Token {
   user User @relation("tokens__user_id", fields: [user_id], references: [id])
 
   @@map("tokens")
+}
+
+model Company {
+  id   String @id @db.Uuid
+  name String
+
+  permissions Permission[] @relation("permissions__company_id")
+  products    Product[]    @relation("products__company_id")
+  units       Unit[]       @relation("units__company_id")
+  customers   Customer[]   @relation("companies__company_id")
+
+  @@map("companies")
+}
+
+model Permission {
+  id         String @id @db.Uuid
+  company_id String @db.Uuid
+  user_id    String @db.Uuid
+  role       Role
+
+  company Company @relation("permissions__company_id", fields: [company_id], references: [id])
+  user    User    @relation("permissions__user_id", fields: [user_id], references: [id])
+
+  @@map("permissions")
+}
+
+model Product {
+  id           String @id @db.Uuid
+  name         String
+  company_id   String @db.Uuid
+  base_unit_id String @db.Uuid
+
+  company   Company @relation("products__company_id", fields: [company_id], references: [id])
+  base_unit Unit    @relation("products_base__base_unit_id", fields: [base_unit_id], references: [id])
+
+  product_units ProductUnit[] @relation("product_units__product_id")
+
+  @@map("products")
+}
+
+model Unit {
+  id         String @id @db.Uuid
+  name       String
+  company_id String @db.Uuid
+
+  company Company @relation("units__company_id", fields: [company_id], references: [id])
+
+  products      Product[]     @relation("products_base__base_unit_id")
+  product_units ProductUnit[] @relation("product_units__unit_id")
+
+  @@map("units")
+}
+
+model ProductUnit {
+  id         String  @id @db.Uuid
+  product_id String  @db.Uuid
+  unit_id    String  @db.Uuid
+  multiplier Decimal
+
+  product Product @relation("product_units__product_id", fields: [product_id], references: [id])
+  unit    Unit    @relation("product_units__unit_id", fields: [unit_id], references: [id])
+
+  order_details OrderDetail[] @relation("order_detauls__product_unit_id")
+
+  @@map("product_units")
+}
+
+model Customer {
+  id         String @id @db.Uuid
+  name       String
+  company_id String @db.Uuid
+
+  company Company @relation("companies__company_id", fields: [company_id], references: [id])
+
+  orders Order[] @relation("orders__customer_id")
+
+  @@map("customers")
+}
+
+model Order {
+  id          String   @id @db.Uuid
+  customer_id String   @db.Uuid
+  order_date  DateTime @db.Date
+
+  customer Customer @relation("orders__customer_id", fields: [customer_id], references: [id])
+
+  order_details OrderDetail[] @relation("order_details__order_id")
+
+  @@map("orders")
+}
+
+model OrderDetail {
+  id              String  @id @db.Uuid
+  order_id        String  @db.Uuid
+  product_unit_id String  @db.Uuid
+  amount          Decimal
+
+  order        Order       @relation("order_details__order_id", fields: [order_id], references: [id])
+  product_unit ProductUnit @relation("order_detauls__product_unit_id", fields: [product_unit_id], references: [id])
+
+  @@map("order_details")
 }
