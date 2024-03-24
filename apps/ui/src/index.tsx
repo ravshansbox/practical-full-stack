@@ -1,6 +1,6 @@
 import { QueryClientProvider } from '@tanstack/react-query';
 import { createRoot } from 'react-dom/client';
-import { App } from './App';
+import { App } from './components/App';
 import { queryClient, trpc, trpcClient } from './trpc';
 
 createRoot(document.querySelector('#root')!).render(

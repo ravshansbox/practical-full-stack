@@ -4,5 +4,19 @@
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.formatOnSave": true,
   "files.associations": { "*.css": "tailwindcss" },
+  "tailwindCSS.experimental.classRegex": [
+    [
+      "((?:w)(?:[\\.a-zA-Z0-9]*)?\\((?:[^)(]|\\((?:[^)(]|\\((?:[^)(]|\\([^)(]*\\))*\\))*\\))*\\))",
+      "(?:')([^']*)(?:')"
+    ],
+    [
+      "((?:w)(?:[\\.a-zA-Z0-9]*)?\\((?:[^)(]|\\((?:[^)(]|\\((?:[^)(]|\\([^)(]*\\))*\\))*\\))*\\))",
+      "(?:\")([^\"]*)(?:\")"
+    ],
+    [
+      "((?:w)(?:[\\.a-zA-Z0-9]*)?\\((?:[^)(]|\\((?:[^)(]|\\((?:[^)(]|\\([^)(]*\\))*\\))*\\))*\\))",
+      "(?:`)([^`]*)(?:`)"
+    ]
+  ],
   "typescript.tsdk": "node_modules/typescript/lib"
 }

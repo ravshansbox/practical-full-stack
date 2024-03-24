@@ -8,6 +8,14 @@ module.exports = {
   parser: '@typescript-eslint/parser',
   root: true,
   rules: {
+    '@typescript-eslint/no-unused-vars': [
+      'error',
+      {
+        argsIgnorePattern: '^_',
+        varsIgnorePattern: '^_',
+        caughtErrorsIgnorePattern: '^_',
+      },
+    ],
     'react/react-in-jsx-scope': 'off',
   },
   settings: {
