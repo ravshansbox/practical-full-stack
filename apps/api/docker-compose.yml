@@ -5,4 +5,16 @@ services:
       - POSTGRES_PASSWORD=postgres
     ports:
       - 127.0.0.1:5432:5432
+    volumes:
+      - ./data/postgres:/var/lib/postgresql/data
     command: postgres -c log_statement=all
+  mongo-logs:
+    image: mongo
+    environment:
+      - MONGO_INITDB_DATABASE=logs
+      - MONGO_INITDB_ROOT_USERNAME=ml
+      - MONGO_INITDB_ROOT_PASSWORD=ml
+    ports:
+      - 127.0.0.1:27017:27017
+    volumes:
+      - ./data/mongo-logs:/data/db
