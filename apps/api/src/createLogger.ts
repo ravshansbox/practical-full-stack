@@ -15,7 +15,6 @@ const transportMongo = new winston.transports.MongoDB({
 
 export const createLogger = (service: string) => {
   return winston.createLogger({
-    level: 'info',
     format: winston.format.json(),
     defaultMeta: { service },
     transports: [transportConsole, transportMongo],
