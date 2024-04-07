@@ -1,10 +1,10 @@
-import { useForm } from 'react-hook-form';
+import { Button, PasswordInput, TextInput } from '@mantine/core';
+import { useForm } from '@mantine/form';
 import { trpc } from '../trpc';
-import { Button } from './core/Button';
 
 export const LoginForm = () => {
-  const { handleSubmit, register } = useForm({
-    defaultValues: {
+  const form = useForm({
+    initialValues: {
       username: '',
       password: '',
     },
@@ -19,18 +19,21 @@ export const LoginForm = () => {
   });
 
   return (
-    <form className="max-w-64" onSubmit={handleSubmit(createToken.mutate)}>
+    <form
+      className="max-w-64"
+      onSubmit={form.onSubmit((values) => {
+        createToken.mutate(values);
+      })}
+    >
       <label>
         <span>Username:</span>
-        <input type="text" {...register('username')} />
+        <TextInput type="text" {...form.getInputProps('username')} />
       </label>
       <label>
         <span>Password:</span>
-        <input type="text" {...register('password')} />
+        <PasswordInput type="text" {...form.getInputProps('password')} />
       </label>
-      <Button type="submit" color="gray" size="md">
-        Submit
-      </Button>
+      <Button type="submit">Submit</Button>
     </form>
   );
 };
