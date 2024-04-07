@@ -1,12 +1,12 @@
 import { trpc } from '../../trpc';
-import { createOne } from './createOne';
-import { deleteOne } from './deleteOne';
-import { fetchMany } from './fetchMany';
-import { updateOne } from './updateOne';
+import { createCompany } from './createCompany';
+import { deleteCompany } from './deleteCompany';
+import { fetchCompanies } from './fetchCompanies';
+import { updateCompanies } from './updateCompanies';
 
 export default trpc.router({
-  fetchMany,
-  createOne,
-  updateOne,
-  deleteOne,
+  createCompany,
+  deleteCompany,
+  fetchCompanies,
+  updateCompanies,
 });

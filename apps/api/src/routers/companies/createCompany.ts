@@ -4,7 +4,7 @@ import { prismaClient } from '../../prismaClient';
 import { authProcedure } from '../../trpc';
 import { id } from '../../utils';
 
-export const createOne = authProcedure
+export const createCompany = authProcedure
   .input(z.object({ name: z.string() }))
   .mutation(async ({ ctx, input }) => {
     const company = await prismaClient.company.create({
