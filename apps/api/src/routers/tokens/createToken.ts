@@ -1,5 +1,6 @@
 import { TRPCError } from '@trpc/server';
 import { addHours } from 'date-fns';
+import { omit } from 'lodash';
 import { z } from 'zod';
 import { createLogger } from '../../createLogger';
 import { prismaClient } from '../../prismaClient';
@@ -25,10 +26,7 @@ export const createToken = trpc.procedure
       logger.error(message);
       throw new TRPCError({ code: 'UNAUTHORIZED', message });
     }
-    const {
-      user: { password: _password, ...userWithoutPassword },
-      ...token
-    } = await prismaClient.token.create({
+    const token = await prismaClient.token.create({
       data: {
         id: id(),
         access_token: id(),
@@ -37,9 +35,6 @@ export const createToken = trpc.procedure
         refresh_token_valid_until: addHours(new Date(), 24),
         user_id: user.id,
       },
-      include: {
-        user: true,
-      },
     });
-    return { ...token, user: userWithoutPassword };
+    return { ...token, user: omit(user, ['password']) };
   });

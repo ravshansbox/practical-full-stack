@@ -5,7 +5,7 @@ import { z } from 'zod';
 import { prismaClient } from '../../prismaClient';
 import { authProcedure } from '../../trpc';
 
-export const updateCompanies = authProcedure
+export const updateCompany = authProcedure
   .input(z.object({ company_id: z.string(), name: z.string() }))
   .mutation(async ({ input }) => {
     const permission = await prismaClient.permission.findFirst({
