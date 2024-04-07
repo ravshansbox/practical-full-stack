@@ -8,6 +8,7 @@ module.exports = {
   parser: '@typescript-eslint/parser',
   root: true,
   rules: {
+    'object-shorthand': 'error',
     '@typescript-eslint/consistent-type-imports': [
       'error',
       { fixStyle: 'inline-type-imports' },
