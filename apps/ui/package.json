@@ -28,6 +28,6 @@
     "react-dom": "^18.3.1",
     "react-router-dom": "^6.23.0",
     "typescript": "^5.4.5",
-    "vite": "^5.4.20"
+    "vite": "^5.4.21"
   }
 }
